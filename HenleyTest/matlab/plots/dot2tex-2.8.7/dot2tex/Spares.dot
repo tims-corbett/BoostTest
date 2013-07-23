@@ -1,0 +1,20 @@
+digraph {
+ graph [ rankdir="TB" ordering=out];
+
+rank = same {
+4[label=" " texlbl="\begin{matrix}N, n\\State $n+1$ \end{matrix}"];
+3[label=" " texlbl="\begin{matrix}N, n-1\\State $n$ \end{matrix}"];
+2[label=" " texlbl="\begin{matrix}N, n-2\\State $n-1$ \end{matrix}"];
+1[label=" " texlbl="\begin{matrix}N, 0\\State $1$ \end{matrix}"];
+0[label=" " texlbl="\begin{matrix}N-1, 0\\State $0$ \end{matrix}"];
+}
+
+4->3[label = " " texlbl="$N\lambda" style="ultra thick"];
+3->2[label = " " texlbl="$N\lambda" style="ultra thick"];
+2->1[label = " " texlbl="$N\lambda" style="ultra thick"];
+1->0[label = " " texlbl="$N\lambda" style="ultra thick"];
+
+0->1[label = " " texlbl="$(n+1)\mu$" style="ultra thick"];
+1->2[label = " " texlbl="" style="ultra thick"];
+2->3[label = " " texlbl="$2\mu$" style="ultra thick"];
+3->4[label = " " texlbl="$\mu$" style="ultra thick"];

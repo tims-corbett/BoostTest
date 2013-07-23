@@ -1,0 +1,77 @@
+function NCCWTest()
+    clc;
+    clear;
+
+    TimeSpent();
+    %MarkovTest();
+    %SMPPlotsLowProb();
+    %figure;
+    %SMPPlotsHighProb();
+
+  %time 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 1.3
+  %col  2   3   4   5   6   7   8   9   10  11  12
+  
+function  TimeSpent()
+    Z = load(cell2mat({'NCCWState2.dat'}));
+    t = Z(:,1);
+    
+    i=1;
+    for cov = 2:8
+        State1TimeSpent(cov-1) = trapz(t, Z(:,cov));
+    end;
+    plot(cov, State1TimeSpent);
+    
+    
+  
+function SMPPlotsLowProb()
+    Z = load(cell2mat({'NCCW.dat'}));
+    for cov = 6:9
+        SMPTest(cov,Z);
+    end;
+
+function SMPPlotsHighProb()
+    Z = load(cell2mat({'NCCW.dat'}));
+    for cov = 9:12
+        SMPTest(cov,Z);
+    end;
+    
+function SMPTest(col,Z)
+
+    t = 1:100:length(Z);
+       
+    T = Z(t,1);
+    X = Z(t,col);
+        
+    clrs = {'r', 'r', 'k', 'g'};
+
+    plot(T, X, clrs{1});  
+    hold on;
+    grid on;
+    title('system plot');
+    set(gca, 'YScale', 'log');
+
+
+function MarkovTest()
+    global BaseCase CommonCause;
+    BaseCase = true;
+    CommonCause = 0;
+
+    Lifetime=10^2;
+    N=200;
+    dt=Lifetime/N;
+    StateCount=3;
+    p0 = zeros(1,StateCount)';
+    p0(3)=1;
+
+
+    dpdt_system = ode5(@mssode_Chap2App, 0:dt:Lifetime, p0);    %mssode_xing
+
+    plot(0:dt:Lifetime, dpdt_system(:,1) , '-.');
+    hold on;
+
+    hold on;
+%    axis([0 Lifetime 1E-6 1E-1]);
+    xlabel('Time(hr)');
+    ylabel('System failure probability');
+    set(gca, 'YScale', 'log');
+

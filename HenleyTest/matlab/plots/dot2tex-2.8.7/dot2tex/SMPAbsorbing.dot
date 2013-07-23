@@ -1,0 +1,16 @@
+digraph  {
+graph [
+rankdir="LR"  ];
+2[label=" " texlbl="$\begin{matrix}2 \\ 11 \end{matrix}$"];
+1[label=" " texlbl="$\begin{matrix}1 \\ 10,01 \end{matrix}$"];
+
+0[label=" " texlbl="$\begin{matrix}0 \\ 00 \end{matrix}$" style=filled color=lightgray];
+ 
+  edge [lblstyle="auto",topath="bend left"];
+
+
+1 -> 0[label=" " texlbl="$T_1$" style="ultra thick"];
+1 -> 2[label=" " texlbl="$Y$" style="ultra thick"];
+2 -> 1[label=" " texlbl="$T$" style="ultra thick"];
+0 -> 1[label=" " texlbl="$Y$" style="ultra thick"];
+}

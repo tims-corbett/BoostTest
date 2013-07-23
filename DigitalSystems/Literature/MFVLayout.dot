@@ -1,0 +1,23 @@
+digraph {
+ graph [ rankdir="TB"];
+
+nodesep=0.25
+
+rank=same{
+1[shape=box label=" " texlbl="$\begin{matrix} Main/Backup \\ Computer  \end{matrix}$"];
+2[shape=box label=" " texlbl="$\begin{matrix} Sensor \end{matrix}$"];
+3[shape=box label=" " texlbl="$\begin{matrix} Steam \\ Generator \end{matrix}$"];
+}
+
+rank=same{
+4[shape=box label=" " texlbl="$\begin{matrix} Feedwater \\ Controller \end{matrix}$"];
+5[shape=box label=" " texlbl="$\begin{matrix} Main \text{ } Feedwater \\ Valve \text{ } (MFV) \end{matrix}$"];
+}
+
+2->3[dir=back style=thick]
+1->4[style=thick]
+4->5[style=thick label = " " texlbl="$\begin{matrix} Actuates \end{matrix}$"]
+5->3[style=thick]
+
+
+1->2[dir=back style=thick label = " " texlbl="$\begin{matrix} & Water \\ & Level \\ &  \\ & \end{matrix}$"]

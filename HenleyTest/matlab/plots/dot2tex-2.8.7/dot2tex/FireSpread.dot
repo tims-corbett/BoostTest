@@ -1,0 +1,36 @@
+digraph {
+
+ graph [  rankdir="BT" ordering=out];
+
+rank = same {
+1[label=" " texlbl="$\begin{matrix}1 \\ Non-fire\end{matrix}$" ];
+13[shape=none label=""  texlbl=""]
+}
+
+
+rank = same {
+2[label=" " texlbl="$\begin{matrix}2 \\ Sustained\end{matrix}$"];
+12[shape=none, label=" " texlbl=""];
+46[shape=none, label=" " texlbl=""];
+4[label=" " texlbl="$\begin{matrix}4 \\ Interactive\end{matrix}$"];
+6[label=" " texlbl="$\begin{matrix}6 \\ Full room\end{matrix}$"];
+}
+
+rank = same {
+11[shape=none, label=" " texlbl=""];
+3[label=" " texlbl="$\begin{matrix}3 \\ Vigorous\end{matrix}$"];
+5[label=" " texlbl="$\begin{matrix}5 \\ Remote\end{matrix}$"];
+}
+
+2->1 [style=thick]
+2->11[style=invis]
+2->12[style=invis]
+4->46[style=invis]
+
+
+2->3 [dir=both style=thick] 
+3->4[dir=both style=thick] 
+4->5[dir=both style=thick] 
+5->6 [style=thick]
+
+

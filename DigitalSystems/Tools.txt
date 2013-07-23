@@ -1,0 +1,46 @@
+Dynamic Fault Tree (DFT)
+
++ Dependency gates
+- Quantification: Boolean logic or Markov models
+- Cutsets may change with system evolution in time
+
+
+
+Dynamic Flowgrapgh Methodology (DFM)
+
+- Uses Decision Tables (state transitions)
++ Digrapgh approach
++ Uses physical process vars (hardware)
+- Cannot accurately quantify dependencies between failure events
++ http://virtual.vtt.fi/virtual/safir2010/vasenpalkki/interim2009/charisma_karanta.pdf
++ Nodes: Variables (Water level, Valve position)
++ Nodes have discrete states (High, Stationary, Low)
++ Edges: Dependencies
++ Multiple top-events
+- No Systematic modelling methods
+- Heavy computational demand
+- Combinatorial explosion
++ Physical properties and Software behaviour
+
+
+Petri nets
+
+-Graph theoretic
+-Quantification: Simulation
+-Size of the model
++Can be converted to fault trees
+
+
+
+
+Why SMP
+
+- Require highly time dependent plant info
+- Digital failure data generation is problematic
+
+
+Traditional Fault Trees
+
+- Sequential vs. Functional failures
+- Spares, Dynamic Redundancies
+- Priority of failure events

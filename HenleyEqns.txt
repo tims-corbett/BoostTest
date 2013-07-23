@@ -1,0 +1,18 @@
+\begin{align*}
+\phi_{00}(t) = &W_0(t) + \int_0^t{ C_{01}(\tau)\phi_{10}(t-\tau) }d\tau +\int_0^t{ C_{02}(\tau)\phi_{20}(t-\tau) }d\tau \\
+\phi_{01}(t) = &\int_0^t{ C_{01}(\tau)\phi_{11}(t-\tau) }d\tau +\int_0^t{ C_{02}(\tau)\phi_{21}(t-\tau) }d\tau \\
+\phi_{02}(t) = &\int_0^t{ C_{01}(\tau)\phi_{12}(t-\tau) }d\tau +\int_0^t{ C_{02}(\tau)\phi_{22}(t-\tau) }d\tau \\
+\phi_{03}(t) = &\int_0^t{ C_{01}(\tau)\phi_{13}(t-\tau) }d\tau +\int_0^t{ C_{02}(\tau)\phi_{23}(t-\tau) }d\tau \\
+\phi_{10}(t) = &\int_0^t{ C_{10}(\tau)\phi_{00}(t-\tau) }d\tau +\int_0^t{ C_{13}(\tau)\phi_{30}(t-\tau) }d\tau \\
+\phi_{11}(t) = &W_1(t) + \int_0^t{ C_{10}(\tau)\phi_{01}(t-\tau) }d\tau +\int_0^t{ C_{13}(\tau)\phi_{31}(t-\tau) }d\tau \\
+\phi_{12}(t) = &\int_0^t{ C_{10}(\tau)\phi_{02}(t-\tau) }d\tau +\int_0^t{ C_{13}(\tau)\phi_{32}(t-\tau) }d\tau \\
+\phi_{13}(t) = &\int_0^t{ C_{10}(\tau)\phi_{03}(t-\tau) }d\tau +\int_0^t{ C_{13}(\tau)\phi_{33}(t-\tau) }d\tau \\
+\phi_{20}(t) = &\int_0^t{ C_{20}(\tau)\phi_{00}(t-\tau) }d\tau +\int_0^t{ C_{23}(\tau)\phi_{30}(t-\tau) }d\tau \\
+\phi_{21}(t) = &\int_0^t{ C_{20}(\tau)\phi_{01}(t-\tau) }d\tau +\int_0^t{ C_{23}(\tau)\phi_{31}(t-\tau) }d\tau \\
+\phi_{22}(t) = &W_2(t) + \int_0^t{ C_{20}(\tau)\phi_{02}(t-\tau) }d\tau +\int_0^t{ C_{23}(\tau)\phi_{32}(t-\tau) }d\tau \\
+\phi_{23}(t) = &\int_0^t{ C_{20}(\tau)\phi_{03}(t-\tau) }d\tau +\int_0^t{ C_{23}(\tau)\phi_{33}(t-\tau) }d\tau \\
+\phi_{30}(t) = &\int_0^t{ C_{31}(\tau)\phi_{10}(t-\tau) }d\tau +\int_0^t{ C_{32}(\tau)\phi_{20}(t-\tau) }d\tau \\
+\phi_{31}(t) = &\int_0^t{ C_{31}(\tau)\phi_{11}(t-\tau) }d\tau +\int_0^t{ C_{32}(\tau)\phi_{21}(t-\tau) }d\tau \\
+\phi_{32}(t) = &\int_0^t{ C_{31}(\tau)\phi_{12}(t-\tau) }d\tau +\int_0^t{ C_{32}(\tau)\phi_{22}(t-\tau) }d\tau \\
+\phi_{33}(t) = &W_3(t) + \int_0^t{ C_{31}(\tau)\phi_{13}(t-\tau) }d\tau +\int_0^t{ C_{32}(\tau)\phi_{23}(t-\tau) }d\tau \\
+\end{align*}

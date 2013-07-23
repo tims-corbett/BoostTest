@@ -1,0 +1,46 @@
+/*
+* @command = neato
+*
+*/
+digraph {
+
+ graph [  rankdir="TB" ];
+ ranksep = 1.5;
+ nodesep=.35;
+
+
+rank=same {
+1[label=" " texlbl="$\begin{matrix}1 \\ Correct \\ Output\end{matrix}$" ];
+8[style=invis];
+4[label=" " texlbl="$\begin{matrix}4 \\ Output \\ High\end{matrix}$"];
+5[label=" " texlbl="$\begin{matrix}5 \\ Arbitrary \\ Output\end{matrix}$"];
+
+}
+
+rank=same{
+2[label=" " texlbl="$\begin{matrix}2 \\ Output \\ low\end{matrix}$"];
+3[label=" " texlbl="$\begin{matrix}3 \\ Previous \\ Output\end{matrix}$"];
+7[style=invis];
+}
+
+
+1->2[style=thick]
+
+edge [lblstyle="above" topath="bend left"];
+
+1->8[style=invis]
+8->4[style=invis]
+1->4 [style=thick]
+4->5 [style=invis]
+1->5 [style=thick]
+
+8->3[style=invis]
+4->3 [style=thick]
+5->3 [style=thick]
+1->3[style=thick]
+
+2->7[style=invis]
+
+
+edge [lblstyle="above" topath="bend right"];
+2->3[style=thick]

@@ -1,0 +1,42 @@
+function dpdt = mssode_fire(t, p)
+
+nStates=5;
+
+
+ m12 = 25.5e-8;		% Correct -> Low
+ m13 = 4.2e-5;		% Correct -> Prev			--> Weibull
+ m14 = 5.5e-8;		% Correct -> High
+ m15 = 5.5e-8;		% Correct -> Arb.
+ m23 = 4.2e-5;		% Low -> Prev
+ m43 = 4.2e-5;		% High -> Prev
+ m53 = 4.2e-5;		% Arb -> Prev
+
+
+ a = [
+     0  m12 m13 m14 m15
+     0  0   m23 0   0
+     0  0   0   0   0
+     0  0   m43 0   0
+     0  0   m53 0   0   ];
+ 
+ 
+  
+
+aSize = length(a);
+
+for i = 1:aSize
+    a(i,i) = -sum(a(i,:));
+end;
+
+
+% for i = 1:aSize     % Horz
+%     txt=' ';
+%     for j = 1:aSize % Vert
+%         if ( i~= j) 
+%             txt = strcat( txt, num2str(a(j,i)), 'p', num2str(j), '(t) + ');
+%         end;
+%     end;
+%     txt = strcat( 'dp', num2str(i), '(t)/dt = ', txt, num2str(a(i,i)), 'p', num2str(i), '(t)')
+% end;
+
+dpdt =  (p'*a)';

@@ -1,0 +1,46 @@
+function HenleyReducedState()
+clc;
+clear;
+
+MarkovTest();
+SemiMarkovTest();
+
+
+function SemiMarkovTest()
+
+    
+    State0 = 2; State1 = 3; State2 = 4;
+
+    figure;
+    hold on;
+  
+    cv = 0.3:0.1:0.6;
+
+    for i = 1:length(cv)
+        fpath = cell2mat({'HenleyWbl' num2str(cv(i)) '.dat'});
+        X = load(fpath);
+        T = 1:100:length(X);
+        P = X(:,State0);
+        scaleX = max(P);
+        plot(X(T,1), P(T)./scaleX ,'r');
+    end;
+    
+    grid on;
+
+
+
+function MarkovTest()
+    Lifespan = 0:0.1:60;
+    aSize = 3;
+    p0 = zeros(1,aSize)';
+    p0(3)=1;
+    dpdt = ode5(@mssode, Lifespan , p0);
+    plot( Lifespan, dpdt(:, 1)  )
+    xlabel('time');
+    ylabel('System unavailability');
+    hold on;
+    %axis([0 20 1e-4 3e-4]);
+
+    grid on;
+    set(gca,'YMinorGrid', 'off');
+    set(gca,'YMinorTick', 'on');

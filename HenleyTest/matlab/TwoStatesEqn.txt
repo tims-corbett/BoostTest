@@ -1,0 +1,6 @@
+\begin{align*}
+\phi_{00}(t) = &W_0(t) + \int_0^t{ C_{01}(\tau)\phi_{10}(t-\tau) }d\tau \\
+\phi_{01}(t) = &\int_0^t{ C_{01}(\tau)\phi_{11}(t-\tau) }d\tau \\
+\phi_{10}(t) = &\int_0^t{ C_{10}(\tau)\phi_{00}(t-\tau) }d\tau \\
+\phi_{11}(t) = &W_1(t) + \int_0^t{ C_{10}(\tau)\phi_{01}(t-\tau) }d\tau \\
+\end{align*}

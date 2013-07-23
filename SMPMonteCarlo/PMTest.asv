@@ -1,0 +1,12 @@
+function PMTest()
+    clc;
+    clear;
+    
+    
+function RunCase()    
+    Z = load(cell2mat({'TwoComponents.dat'}));
+    t = Z(:,1);
+    plot(t, Z(:,2));
+    hold on;
+    grid on;
+    

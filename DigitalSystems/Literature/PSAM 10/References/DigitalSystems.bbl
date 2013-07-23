@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\eprint}[2][]{\url{#2}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Inproceedings
+\bibitem[{Chu et~al.(2010)Chu, Martinez-Gurdi, Kuritzky and Amri}]{Tsong2010}
+\bibinfo{author}{Chu, T.L.}, \bibinfo{author}{Martinez-Gurdi, G.},
+  \bibinfo{author}{Kuritzky, A.}, \bibinfo{author}{Amri, A.},
+  \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{International experience with modeling digital
+  systems in psas}, in: \bibinfo{booktitle}{Proc. of the 10th International
+  Probabilistic Safety Assessment \& Management Conference},
+  \bibinfo{address}{Seattle, Washington, USA}.
+
+\end{thebibliography}

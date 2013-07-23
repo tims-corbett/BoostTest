@@ -1,0 +1,127 @@
+% NCCW.dat -        Original NCCW 0.4, 0.7, 1.0 without truncation 100 hrs
+% NCCWTruncated -   Truncated NCCW 0.4, 0.7, 1.0 - 30 to 90 hrs
+% NCCWTruncated200 -Truncated NCCW 0.4, 0.7, 1.0 - 100 hrs after 1 year
+
+function NCCWTest()
+    clc;
+    clear;
+
+    %MarkovTest();
+    %MarkovMissionReliability();
+    %SMPPlotsLowProb({'NCCW.dat'});
+    
+    SemiMarkovMissionReliability(3) %cov=1.0
+    
+    
+    
+  %time 0.4 0.7 1.0
+  %col  2   3   4 
+  
+  
+function SMPPlotsLowProb(file)
+    Z = load(cell2mat(file));
+    for cov = 2:4
+        SMPTest(cov,Z);
+    end;
+
+function SMPTest(col,Z)
+      
+    T = Z(:,1);
+    X = Z(:,col);
+        
+    clrs = {'r', 'r', 'k', 'g'};
+
+    plot(T, X, clrs{1});  
+    hold on;
+   % grid on;
+    title('system plot');
+    set(gca, 'YScale', 'log');
+
+
+function MarkovTest()
+    global  CommonCause;
+    CommonCause = 0;
+
+    Lifetime=100;
+    N=8000;
+    dt=Lifetime/N;
+    StateCount=3;
+    p0 = zeros(1,StateCount)';
+    p0(3)=1;
+
+    dpdt_system = ode5(@mssode_Chap2App, 0:dt:Lifetime, p0);    %mssode_xing
+
+    plot(0:dt:Lifetime, dpdt_system(:,1) , '-.');
+    hold on;
+%    axis([0 Lifetime 1E-6 1E-1]);
+    xlabel('Time(hr)');
+    ylabel('System failure probability');
+    set(gca, 'YScale', 'log');
+
+
+function MarkovMissionReliability()
+    global  CommonCause;
+    CommonCause = 0;
+
+    Lifetime=100;
+    N=8000;
+    dt=Lifetime/N;
+    StateCount=3;
+    p0 = zeros(1,StateCount)';
+    p0(3)=1;
+
+    dpdt_system = ode5(@mssode_Chap2App, 0:dt:Lifetime, p0);    %mssode_xing
+    fp = dpdt_system(:,1);
+    rel =1 - fp;
+    
+    plot(0:dt:Lifetime, dpdt_system(:,1) , '-.');
+    hold on;
+    xlabel('Time(hr)');
+    ylabel('System reliability');
+
+    relt = 0:dt:Lifetime;
+    R = @(t) rel(1 +  ceil(t/dt));
+    
+    T = 50; %50 hrs already survived
+    t = dt:dt:30;      %will it survive 30 more hrs
+    
+    MR = @(t) R(T+t)./R(T) %mission reliability
+    
+    plot( t, 1-MR(t))
+    set(gca, 'YScale', 'log');
+
+
+function SemiMarkovMissionReliability(col)
+    Z = load(cell2mat({'NCCW.dat'}));
+    tm = Z(:,1);
+    Y = Z(:,col);
+    dt = tm(2);
+    Lifetime = tm(end);
+    rel = 1 - Y;
+    
+    
+    %plot(0:dt:Lifetime, Y , '-');
+%     set(gca, 'YScale', 'log');
+%     hold on;
+%     xlabel('Time(hr)');
+%     ylabel('System failure probability');
+%     grid on;
+%     set(gca,'YMinorGrid', 'off');
+
+
+    relt = 0:dt:Lifetime;
+    R = @(t) rel(1 +  ceil(t/dt));
+    
+    T = 50; %50 hrs already survived
+    t = dt:dt:30;      %will it survive 30 more hrs
+    
+    MR = @(t) R(T+t)./R(T) %mission reliability
+    
+    figure;
+    plot( 50 + t, 1-MR(t))
+    xlabel('Time(hr)');
+    ylabel('Mission unreliability');
+    set(gca, 'YScale', 'log');
+    grid on;
+    set(gca,'YMinorGrid', 'off');
+    axis([50 80 10^-9 10^-5 ]);

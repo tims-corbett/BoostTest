@@ -1,0 +1,30 @@
+%Compares Markov, RBD and SMP for a parallel subsystem
+
+function CompareMethods()
+clc;
+clear;
+CompareProbRuleSMP('WblExp');    
+%MarkovTestFourStates();       
+
+
+function MarkovTestFourStates();       
+    Lifespan = 0:0.1:60;
+    aSize =  4;
+    p0 = zeros(1,aSize)';
+    p0(4)=1;
+    dpdt = ode5(@mssode_TwoComponentsParallel, Lifespan , p0);
+    T = 1:10:length(Lifespan);
+    plot( Lifespan(T), dpdt(T, 1),'b-'  )
+    xlabel('time');
+    ylabel('System Unavailability');
+    hold on;
+    grid on;
+
+    
+    
+function CompareSubsystem(dist)
+    Y = load(cell2mat({dist 'RedundantSystem.dat');
+    plot(Y(:,1), Y(:,2), 'r');
+    C = load('ExpExpRedundantComponent.dat');
+    plot(C(:,1), C(:,2).*C(:,3), 'g');
+

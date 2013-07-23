@@ -1,0 +1,14 @@
+digraph  {
+graph [
+rankdir="LR"  ];
+
+1[label=" " texlbl="$\begin{matrix}1 \\ 10,01 \end{matrix}$"];
+
+0[label=" " texlbl="$\begin{matrix}0 \\ 00 \end{matrix}$" style=filled color=lightgray];
+ 
+  edge [lblstyle="auto",topath="bend left"];
+
+
+1 -> 0[label=" " texlbl="$X$" style="ultra thick"];
+0 -> 1[label=" " texlbl="$Y$" style="ultra thick"];
+}

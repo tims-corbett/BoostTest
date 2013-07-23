@@ -1,0 +1,29 @@
+clc
+clear
+format long;
+
+s = warning('off','MATLAB:divideByZero');
+
+Lifetime =24; 
+N=8000;
+dt=Lifetime/N;
+figure;
+
+StateCount = 5;
+
+p0 = zeros(1,StateCount)';
+p0(1)=1;
+dpdt_system = ode5(@mssode_DIC, 0:dt:Lifetime, p0);
+
+plot(0:dt:Lifetime, dpdt_system(:,2),'b' ); hold on;
+plot(0:dt:Lifetime, dpdt_system(:,3),'r' );
+plot(0:dt:Lifetime, dpdt_system(:,4),'b' );
+plot(0:dt:Lifetime, dpdt_system(:,5),'b' );
+
+
+set(gca, 'YScale', 'log');
+grid on;
+set(gca,'YMinorGrid', 'off');
+
+%axis([0 24 10^-14 10^-7]);
+

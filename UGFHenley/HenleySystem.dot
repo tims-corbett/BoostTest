@@ -1,0 +1,10 @@
+digraph  {
+
+C1 [image = "HenleyComponent12.jpg"];
+C2 [image = "HenleyComponent12.jpg"];
+C3 [image = "HenleyComponent34.jpg"];
+C4 [image = "HenleyComponent34.jpg"];
+
+
+
+};

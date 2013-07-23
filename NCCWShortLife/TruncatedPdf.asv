@@ -1,0 +1,37 @@
+function TruncatedPdf()
+
+clc;
+clear;
+
+[m v]=wblstat(a,b)
+%m = 5.7081
+%v = 0.4716
+%s = 0.6867
+%c = 
+
+l=10; ga=5;
+a = 6; b = 10;
+
+F = @(x) wblcdf(x, l, ga);
+f = @(x) wblpdf(x, l, ga);
+g = @(x) ((x>=a) & (x<=b)).*f(x);
+tf = @(x) g(x)./(F(b)-F(a));
+tF = @(x) (x<a).*0 + ((x>=a) & (x<=b)).*(F(x)-F(a))./(F(b)-F(a)) + (x>b).*1;
+
+t=0:0.01:20;
+
+
+plot(t,f(t),'b-.'); hold on;
+h=plot(t,g(t),'r');
+plot(t,tf(t),'k-.');
+legend('pdf','','Truncated pdf');
+hasbehavior(h,'legend',false) 
+
+figure;
+plot(t,F(t),'b-.'); hold on;
+%plot(t,g(t),'r');
+
+plot(t,tF(t),'k-.');
+axis([0,20, -.1,1.1]);
+
+

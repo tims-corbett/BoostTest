@@ -1,0 +1,23 @@
+digraph  {
+ratio=0.4;
+graph [rankdir="TB"];
+
+rank=same{
+3[label=" " weight=bold texlbl="$\begin{matrix}3 \\ \text{Operating}\end{matrix}$" style="ultra thick"];
+2[label=" " texlbl="$\begin{matrix}2 \\ \text{Degraded}\end{matrix}$" style="ultra thick"];
+0[label=" " texlbl="$\begin{matrix}0 \\ \text{Failure (CM)}\end{matrix}$" style="ultra thick"];
+};
+
+1[label=" " texlbl="$\begin{matrix}1 \\ \text{Repair (PM)}\end{matrix}$" style="ultra thick"];
+
+3 -> 2[label=" " texlbl="$f_1(t)$" style="ultra thick" minlen=2in];
+2 -> 0[label=" " texlbl="$f_2(t)$" style="ultra thick" minlen=2in];
+
+edge [lblstyle="auto" topath="bend left" style="ultra thick"];
+1 -> 3[label=" " texlbl="$g_2(t)$" style="ultra thick"];
+2 -> 1[label=" " texlbl="$g_1(t)$" style="ultra thick"];
+
+
+edge [lblstyle="above" topath="bend right"];
+0 -> 3[label=" " texlbl="$g_3(t)$" style="ultra thick"];
+}
